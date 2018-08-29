@@ -77,3 +77,7 @@ def league_builder():
         for player in raptors:
             file.write(', '.join(player))
             file.write('\n')
+
+# Make sure the script does not execute when imported.
+if __name__ == '__main__':
+    league_builder()
