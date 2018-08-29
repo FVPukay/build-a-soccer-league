@@ -9,6 +9,10 @@ def league_builder():
     experienced = []
     inexperienced = []
 
+    sharks = []
+    dragons = []
+    raptors = []
+
     # Read the data from the supplied csv file.
     with open('soccer_players.csv') as csvfile:
         player_reader = csv.reader(csvfile, delimiter=',')
@@ -26,3 +30,26 @@ def league_builder():
             del row[1]
         for row in inexperienced:
             del row[1]
+
+    # Iterate through all 18 players and assign them to teams such that each
+    # team has the same number of players and such that the number of
+    # experienced players on each team is also the same.
+
+    experienced_copy = experienced[:]
+    inexperienced_copy = inexperienced[:]
+
+    while experienced_copy:
+        try:
+            sharks.append(experienced_copy.pop())
+            dragons.append(experienced_copy.pop())
+            raptors.append(experienced_copy.pop())
+        except IndexError as error:
+            print(error)
+    else:
+        while inexperienced_copy:
+            try:
+                sharks.append(inexperienced_copy.pop())
+                dragons.append(inexperienced_copy.pop())
+                raptors.append(inexperienced_copy.pop())
+            except IndexError as error:
+                print(error)
