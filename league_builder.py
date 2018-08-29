@@ -53,3 +53,27 @@ def league_builder():
                 raptors.append(inexperienced_copy.pop())
             except IndexError as error:
                 print(error)
+
+    # Output a text file called teams.txt that contains the league roster
+    # listing the team name, and each player on the team including the player's
+    # information: name, whether they've played soccer before and their
+    # guardians' names.
+
+    with open('teams.txt', 'w') as file:
+        file.write('Sharks')
+        file.write('\n')
+        for player in sharks:
+            file.write(', '.join(player))
+            file.write('\n')
+        file.write('\n\n')
+        file.write('Dragons')
+        file.write('\n')
+        for player in dragons:
+            file.write(', '.join(player))
+            file.write('\n')
+        file.write('\n\n')
+        file.write('Raptors')
+        file.write('\n')
+        for player in raptors:
+            file.write(', '.join(player))
+            file.write('\n')
