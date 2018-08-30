@@ -78,6 +78,34 @@ def league_builder():
             file.write(', '.join(player))
             file.write('\n')
 
+    # Create 18 welcome letter text files to the player's guardians.
+    for player in sharks:
+        first_practice = 'September 1, 2018'
+        full_name = player[0].split(' ')
+        file_name = '_'.join(full_name) + '.txt'
+        with open(file_name, 'w') as file:
+            file.write('Dear ' + player[2] + ',' + '\n\n')
+            file.write('Congratulations! ' + player[0] + ' is on the Sharks!\n')
+            file.write('The first practice is on ' + first_practice + '.')
+
+    for player in dragons:
+        first_practice = 'September 2, 2018'
+        full_name = player[0].split(' ')
+        file_name = '_'.join(full_name) + '.txt'
+        with open(file_name, 'w') as file:
+            file.write('Dear ' + player[2] + ',' + '\n\n')
+            file.write('Congratulations! ' + player[0] + ' is on the Dragons!\n')
+            file.write('The first practice is on ' + first_practice + '.')
+
+    for player in raptors:
+        first_practice = 'September 3, 2018'
+        full_name = player[0].split(' ')
+        file_name = '_'.join(full_name) + '.txt'
+        with open(file_name, 'w') as file:
+            file.write('Dear ' + player[2] + ',' + '\n\n')
+            file.write('Congratulations! ' + player[0] + ' is on the Raptors!\n')
+            file.write('The first practice is on ' + first_practice + '.')
+
 # Make sure the script does not execute when imported.
 if __name__ == '__main__':
     league_builder()
