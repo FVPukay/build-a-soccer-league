@@ -18,6 +18,14 @@ def league_builder():
         team_2.append(copy.pop())
         team_3.append(copy.pop())
 
+    def write_to_file(team_str, team_list):
+        file.write(team_str)
+        file.write('\n')
+        for player in team_list:
+            file.write(', '.join(player))
+            file.write('\n')
+        file.write('\n\n')
+
     # Read the data from the supplied csv file.
     with open('soccer_players.csv') as csvfile:
         player_reader = csv.reader(csvfile, delimiter=',')
@@ -61,23 +69,9 @@ def league_builder():
     # guardians' names.
 
     with open('teams.txt', 'w') as file:
-        file.write('Sharks')
-        file.write('\n')
-        for player in sharks:
-            file.write(', '.join(player))
-            file.write('\n')
-        file.write('\n\n')
-        file.write('Dragons')
-        file.write('\n')
-        for player in dragons:
-            file.write(', '.join(player))
-            file.write('\n')
-        file.write('\n\n')
-        file.write('Raptors')
-        file.write('\n')
-        for player in raptors:
-            file.write(', '.join(player))
-            file.write('\n')
+        write_to_file('Sharks', sharks)
+        write_to_file('Dragons', dragons)
+        write_to_file('Raptors', raptors)
 
     # Create 18 welcome letter text files to the player's guardians.
     for player in sharks:
