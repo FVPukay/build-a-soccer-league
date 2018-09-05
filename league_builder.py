@@ -13,6 +13,10 @@ def league_builder():
     dragons = []
     raptors = []
 
+    sharks_first_practice = 'September 1, 2018'
+    dragons_first_practice = 'September 2, 2018'
+    raptors_first_practice = 'September 3, 2018'
+
     def assign_to_team(team_1, team_2, team_3, copy):
         team_1.append(copy.pop())
         team_2.append(copy.pop())
@@ -25,6 +29,16 @@ def league_builder():
             file.write(', '.join(player))
             file.write('\n')
         file.write('\n\n')
+
+    def create_welcome_letter(team_list, first_practice, team_str):
+        for player in team_list:
+            full_name = player[0].split(' ')
+            file_name = '_'.join(full_name) + '.txt'
+            with open(file_name, 'w') as file:
+                file.write('Dear ' + player[2] + ',' + '\n\n')
+                file.write('Congratulations! ' + player[0] +
+                           ' is on the ' + team_str + '!\n')
+                file.write('The first practice is on ' + first_practice + '.')
 
     # Read the data from the supplied csv file.
     with open('soccer_players.csv') as csvfile:
@@ -74,32 +88,9 @@ def league_builder():
         write_to_file('Raptors', raptors)
 
     # Create 18 welcome letter text files to the player's guardians.
-    for player in sharks:
-        first_practice = 'September 1, 2018'
-        full_name = player[0].split(' ')
-        file_name = '_'.join(full_name) + '.txt'
-        with open(file_name, 'w') as file:
-            file.write('Dear ' + player[2] + ',' + '\n\n')
-            file.write('Congratulations! ' + player[0] + ' is on the Sharks!\n')
-            file.write('The first practice is on ' + first_practice + '.')
-
-    for player in dragons:
-        first_practice = 'September 2, 2018'
-        full_name = player[0].split(' ')
-        file_name = '_'.join(full_name) + '.txt'
-        with open(file_name, 'w') as file:
-            file.write('Dear ' + player[2] + ',' + '\n\n')
-            file.write('Congratulations! ' + player[0] + ' is on the Dragons!\n')
-            file.write('The first practice is on ' + first_practice + '.')
-
-    for player in raptors:
-        first_practice = 'September 3, 2018'
-        full_name = player[0].split(' ')
-        file_name = '_'.join(full_name) + '.txt'
-        with open(file_name, 'w') as file:
-            file.write('Dear ' + player[2] + ',' + '\n\n')
-            file.write('Congratulations! ' + player[0] + ' is on the Raptors!\n')
-            file.write('The first practice is on ' + first_practice + '.')
+    create_welcome_letter(sharks, sharks_first_practice, 'Sharks')
+    create_welcome_letter(dragons, dragons_first_practice, 'Dragons')
+    create_welcome_letter(raptors, raptors_first_practice, 'Raptors')
 
 # Make sure the script does not execute when imported.
 if __name__ == '__main__':
