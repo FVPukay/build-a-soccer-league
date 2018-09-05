@@ -13,6 +13,11 @@ def league_builder():
     dragons = []
     raptors = []
 
+    def assign_to_team(team_1, team_2, team_3, copy):
+        team_1.append(copy.pop())
+        team_2.append(copy.pop())
+        team_3.append(copy.pop())
+
     # Read the data from the supplied csv file.
     with open('soccer_players.csv') as csvfile:
         player_reader = csv.reader(csvfile, delimiter=',')
@@ -40,17 +45,13 @@ def league_builder():
 
     while experienced_copy:
         try:
-            sharks.append(experienced_copy.pop())
-            dragons.append(experienced_copy.pop())
-            raptors.append(experienced_copy.pop())
+            assign_to_team(sharks, dragons, raptors, experienced_copy)
         except IndexError as error:
             print(error)
     else:
         while inexperienced_copy:
             try:
-                sharks.append(inexperienced_copy.pop())
-                dragons.append(inexperienced_copy.pop())
-                raptors.append(inexperienced_copy.pop())
+                assign_to_team(sharks, dragons, raptors, inexperienced_copy)
             except IndexError as error:
                 print(error)
 
