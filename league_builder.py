@@ -1,8 +1,31 @@
 # Teamtreehouse.com Python Web Development Program
 # Project 1: Build a Soccer League
 # Note: This is designed to work with Python 3
+def assign_to_team(team_1, team_2, team_3, copy):
+    team_1.append(copy.pop())
+    team_2.append(copy.pop())
+    team_3.append(copy.pop())
 
-def league_builder():
+def write_to_file(team_str, team_list):
+    file.write(team_str)
+    file.write('\n')
+    for player in team_list:
+        file.write(', '.join(player))
+        file.write('\n')
+    file.write('\n\n')
+
+def create_welcome_letter(team_list, first_practice, team_str):
+    for player in team_list:
+        full_name = player[0].split(' ')
+        file_name = '_'.join(full_name) + '.txt'
+        with open(file_name, 'w') as file:
+            file.write('Dear ' + player[2] + ',' + '\n\n')
+            file.write('Congratulations! ' + player[0] +
+                       ' is on the ' + team_str + '!\n')
+            file.write('The first practice is on ' + first_practice + '.')
+
+# Make sure the script does not execute when imported.
+if __name__ == '__main__':
     import csv
 
     player_list = []
@@ -16,29 +39,6 @@ def league_builder():
     sharks_first_practice = 'September 1, 2018'
     dragons_first_practice = 'September 2, 2018'
     raptors_first_practice = 'September 3, 2018'
-
-    def assign_to_team(team_1, team_2, team_3, copy):
-        team_1.append(copy.pop())
-        team_2.append(copy.pop())
-        team_3.append(copy.pop())
-
-    def write_to_file(team_str, team_list):
-        file.write(team_str)
-        file.write('\n')
-        for player in team_list:
-            file.write(', '.join(player))
-            file.write('\n')
-        file.write('\n\n')
-
-    def create_welcome_letter(team_list, first_practice, team_str):
-        for player in team_list:
-            full_name = player[0].split(' ')
-            file_name = '_'.join(full_name) + '.txt'
-            with open(file_name, 'w') as file:
-                file.write('Dear ' + player[2] + ',' + '\n\n')
-                file.write('Congratulations! ' + player[0] +
-                           ' is on the ' + team_str + '!\n')
-                file.write('The first practice is on ' + first_practice + '.')
 
     # Read the data from the supplied csv file.
     with open('soccer_players.csv') as csvfile:
@@ -91,7 +91,3 @@ def league_builder():
     create_welcome_letter(sharks, sharks_first_practice, 'Sharks')
     create_welcome_letter(dragons, dragons_first_practice, 'Dragons')
     create_welcome_letter(raptors, raptors_first_practice, 'Raptors')
-
-# Make sure the script does not execute when imported.
-if __name__ == '__main__':
-    league_builder()
