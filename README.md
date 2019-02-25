@@ -1,4 +1,4 @@
-# build-a-soccer-League
+# build-a-soccer-league
 
 ##### What this application does
 
